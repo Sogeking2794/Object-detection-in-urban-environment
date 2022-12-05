@@ -1,16 +1,20 @@
 # Object Detection in an Urban Environment
 
+## Project overview
+
+This project demonstrates how convolutional neural networks may be trained on traffic datasets to detect objects. Transfer learning is used  with Tensorflow. It is crucial to recognize and catergorize every object in the image to comprehend a dynamic environment. To identify cars, other vehicles, pedestrians, and bicycles, we need to train a neural network. It compares the result from reference model without modification and model with augmented input images.
+
 ## Data
 
 For this project, we will be using data from the [Waymo Open dataset](https://waymo.com/open/).
 
-[OPTIONAL] - The files can be downloaded directly from the website as tar files or from the [Google Cloud Bucket](https://console.cloud.google.com/storage/browser/waymo_open_dataset_v_1_2_0_individual_files/) as individual tf records. We have already provided the data required to finish this project in the workspace, so you don't need to download it separately.
-
 ## Structure
+
+As the first step Exploratory Data Analysis is done with ```Exploratory Data Analysis.ipynb```.  The training and validation datasets are split and a pre-trained model is loaded and trained. The model architecture is defined using config files ```pipeline.config```. Different data augmentation ```Explore Augmentations.ipynb```  and hyperparameters were experimented and the model performance on object detection is made better. Tensorboard is used to plot training, validation losses, precision, recall and mAP for small, medium and large sized images. The model prediction is then made into an animation to look at how well the model is able to detect objects in the environment.
 
 ### Data
 
-The data you will use for training, validation and testing is organized as follow:
+The data used for training, validation and testing is organized as follow:
 ```
 /home/workspace/data/waymo
 	- training_and_validation - contains 97 files to train and validate your models
@@ -18,13 +22,12 @@ The data you will use for training, validation and testing is organized as follo
     - val: contain the val data (empty to start)
     - test - contains 3 files to test your model and create inference videos
 ```
-The `training_and_validation` folder contains file that have been downsampled: we have selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
-```
-You will split this `training_and_validation` data into `train`, and `val` sets by completing and executing the `create_splits.py` file.
+The `training_and_validation` folder contains file that have been downsampled: selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
 
+The ```training_and_validation``` data are split into `train`, and `val` sets by the ```create_splits.py``` file.
 
 ### Experiments
-The experiments folder will be organized as follow:
+The experiments folder is organized as follow:
 ```
 experiments/
     - pretrained_model/
@@ -67,9 +70,9 @@ In the classroom workspace, every library and package should already be installe
 
 ### Exploratory Data Analysis
 
-You should use the data already present in `/home/workspace/data/waymo` directory to explore the dataset! This is the most important task of any machine learning project. To do so, open the `Exploratory Data Analysis` notebook. In this notebook, your first task will be to implement a `display_instances` function to display images and annotations using `matplotlib`. This should be very similar to the function you created during the course. Once you are done, feel free to spend more time exploring the data and report your findings. Report anything relevant about the dataset in the writeup.
+This is to see the how the images and corresponding bounding boxes with classes looks like. A function to display images along with bounding boxes and classes is executed. The color coding of the boxes represent whether the object is a vehicle (Red), pedestrian (Blue) or a cyclist (Green). The number of objects in 20000 samples is plotted and compared. It is seen that most of the images has vehicle objects followed by pedestrians and small number of cylists. 
 
-Keep in mind that you should refer to this analysis to create the different spits (training, testing and validation).
+For the number of objects with count of frames, it is seen that there are lesser images with 0 vehicles and more images with 2-10 vehicles. The distribution decreases with increasing number of vehicles. There are upto 65 vehicles in an image. Is it also seen that there are large number of images with zero pedestrians and some images have upto 45 pedestrians. With the cyclists, it is rare to see image with them, atmost of 5 cyclists are seen in an image.
 
 
 ### Create the training - validation splits
