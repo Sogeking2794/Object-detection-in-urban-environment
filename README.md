@@ -81,6 +81,7 @@ The evaluation is run for 1 epoch and is around the training loss about 0.759.
 
 The recall and precision from the evaluation metrics reveals that the model is not good enough as all the values are nearly/ close to zero as seen in the image.
 ![reference_detection_box_precision](https://user-images.githubusercontent.com/62600416/205665215-21c1f29e-06cb-4f82-93ff-941f3f332c83.png)
+![reference_detection_box_recall](https://user-images.githubusercontent.com/62600416/205665555-7027cc2c-fdc8-4152-b54e-338c8ca20112.png)
 
 The model is not good. The evaluation metrics support this statement. 
 Some tweaks in the config and data could be made to improve the models performance. The imporvements made are explained in the next section
