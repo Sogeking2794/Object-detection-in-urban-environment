@@ -63,7 +63,12 @@ In the classroom workspace, every library and package should already be installe
 
 ### Exploratory Data Analysis
 
-This is to see the how the images and corresponding bounding boxes with classes looks like. A function to display images along with bounding boxes and classes is executed. The color coding of the boxes represent whether the object is a vehicle (Red), pedestrian (Blue) or a cyclist (Green). The number of objects in 20000 samples is plotted and compared. It is seen that most of the images has vehicle objects followed by pedestrians and small number of cylists. 
+This is to see the how the images and corresponding bounding boxes with classes looks like. A function to display images along with bounding boxes and classes is executed. The color coding of the boxes represent whether the object is a vehicle (Red), pedestrian (Blue) or a cyclist (Green).
+
+![images_grid](https://user-images.githubusercontent.com/62600416/205665826-4531011b-4bac-41cd-b005-3ed50d61d2e5.png)
+
+The number of objects in 20000 samples is plotted and compared. It is seen that most of the images has vehicle objects followed by pedestrians and small number of cylists. 
+
 
 For the number of objects with count of frames, it is seen that there are lesser images with 0 vehicles and more images with 2-10 vehicles. The distribution decreases with increasing number of vehicles. There are upto 65 vehicles in an image. Is it also seen that there are large number of images with zero pedestrians and some images have upto 45 pedestrians. With the cyclists, it is rare to see image with them, atmost of 5 cyclists are seen in an image.
 
