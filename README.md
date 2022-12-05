@@ -10,7 +10,7 @@ For this project, we will be using data from the [Waymo Open dataset](https://wa
 
 ## Structure
 
-As the first step Exploratory Data Analysis is done with ```Exploratory Data Analysis.ipynb```.  The training and validation datasets are split and a pre-trained model is loaded and trained. The model architecture is defined using config files ```pipeline.config```. Different data augmentation ```Data Augmentation.ipynb```  and hyperparameters were experimented and the model performance on object detection is made better. Tensorboard is used to plot training, validation losses, precision, recall and mAP for small, medium and large sized images. The model prediction is then made into an animation to look at how well the model is able to detect objects in the environment.
+As the first step Exploratory Data Analysis is done with ```Exploratory Data Analysis.ipynb```.  The training and validation datasets are split and a pre-trained model is loaded and trained. The model architecture is defined using config files ```pipeline.config```. Different data augmentation ```Explore Augmentations.ipynb```  and hyperparameters were experimented and the model performance on object detection is made better. Tensorboard is used to plot training, validation losses, precision, recall and mAP for small, medium and large sized images. The model prediction is then made into an animation to look at how well the model is able to detect objects in the environment.
 
 ### Data
 
