@@ -24,8 +24,6 @@ The data used for training, validation and testing is organized as follow:
 ```
 The `training_and_validation` folder contains file that have been downsampled: selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
 
-The ```training_and_validation``` data are split into `train`, and `val` sets by the ```create_splits.py``` file.
-
 ### Experiments
 The experiments folder is organized as follow:
 ```
@@ -45,28 +43,22 @@ experiments/
 
 ### Local Setup
 
-For local setup if you have your own Nvidia GPU, you can use the provided Dockerfile and requirements in the [build directory](./build).
+For local setup Follow [the README therein](./build/README.md) to create a docker container and install all prerequisites. Use the provided Dockerfile and requirements in the [build directory](./build).
 
-Follow [the README therein](./build/README.md) to create a docker container and install all prerequisites.
+## Download and process the data
 
-### Download and process the data
+The first goal of this project is to download the data from the Waymo's Google Cloud bucket to local machine. For this project,only a subset of the data provided is needed (for example, we do not need to use the Lidar data). Therefore, each file is downloaded and trimmed immediately. In `download_process.py`, the `create_tf_example` function, which will perform this processing. This function takes the components of a Waymo Tf record and saves them in the Tf Object Detection api format. An example of such function is described [here](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html#create-tensorflow-records). The `label_map.pbtxt` file is already provided
 
-**Note:** ”If you are using the classroom workspace, we have already completed the steps in the section for you. You can find the downloaded and processed files within the `/home/workspace/data/preprocessed_data/` directory. Check this out then proceed to the **Exploratory Data Analysis** part.
-
-The first goal of this project is to download the data from the Waymo's Google Cloud bucket to your local machine. For this project, we only need a subset of the data provided (for example, we do not need to use the Lidar data). Therefore, we are going to download and trim immediately each file. In `download_process.py`, you can view the `create_tf_example` function, which will perform this processing. This function takes the components of a Waymo Tf record and saves them in the Tf Object Detection api format. An example of such function is described [here](https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/training.html#create-tensorflow-records). We are already providing the `label_map.pbtxt` file.
-
-You can run the script using the following command:
+The script can be run using the following command:
 ```
 python download_process.py --data_dir {processed_file_location} --size {number of files you want to download}
 ```
 
-You are downloading 100 files (unless you changed the `size` parameter) so be patient! Once the script is done, you can look inside your `data_dir` folder to see if the files have been downloaded and processed correctly.
-
 ### Classroom Workspace
 
-In the classroom workspace, every library and package should already be installed in your environment. You will NOT need to make use of `gcloud` to download the images.
+In the classroom workspace, every library and package should already be installed in your environment. No need to make use of `gcloud` to download the images.
 
-## Instructions
+## Dataset Analysis
 
 ### Exploratory Data Analysis
 
