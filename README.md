@@ -2,7 +2,7 @@
 
 ## Project overview
 
-This project demonstrates how convolutional neural networks may be trained on traffic datasets to detect objects. Transfer learning is used  with Tensorflow. It is crucial to recognize and catergorize every object in the image to comprehend a dynamic environment To identify cars, other vehicles, pedestrians, and bicycles, we need to train a neural network. It compares the result from reference model without modification and model with augmented input images.
+This project demonstrates how convolutional neural networks may be trained on traffic datasets to detect objects. Transfer learning is used  with Tensorflow. It is crucial to recognize and catergorize every object in the image to comprehend a dynamic environment. To identify cars, other vehicles, pedestrians, and bicycles, we need to train a neural network. It compares the result from reference model without modification and model with augmented input images.
 
 ## Data
 
