@@ -69,6 +69,7 @@ This is to see the how the images and corresponding bounding boxes with classes 
 
 The number of objects in 20000 samples is plotted and compared. It is seen that most of the images has vehicle objects followed by pedestrians and small number of cylists. 
 
+![class_distribution](https://user-images.githubusercontent.com/62600416/205668868-f9460405-ca45-4f24-8ac7-6dd5bcc7fcd4.png)
 
 For the number of objects with count of frames, it is seen that there are lesser images with 0 vehicles and more images with 2-10 vehicles. The distribution decreases with increasing number of vehicles. There are upto 65 vehicles in an image. Is it also seen that there are large number of images with zero pedestrians and some images have upto 45 pedestrians. With the cyclists, it is rare to see image with them, atmost of 5 cyclists are seen in an image.
 
