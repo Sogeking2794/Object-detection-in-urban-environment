@@ -10,7 +10,7 @@ For this project, we will be using data from the [Waymo Open dataset](https://wa
 
 ## Structure
 
-As the first step Exploratory Data Analysis is done with ```Exploratory Data Analysis.ipynb```.  The training and validation datasets are split and a pre-trained model is loaded and trained. The model architecture is defined using config files ```pipeline.config```. Different data augmentation ```Explore Augmentations.ipynb```  and hyperparameters were experimented and the model performance on object detection is made better. Tensorboard is used to plot training, validation losses, precision, recall and mAP for small, medium and large sized images. The model prediction is then made into an animation to look at how well the model is able to detect objects in the environment.
+As the first step Exploratory Data Analysis is done with ```Exploratory Data Analysis.ipynb```.  The training and validation datasets are split and a pre-trained model is loaded and trained. The model architecture is defined using config files ```pipeline.config```. Different data augmentation ```Explore Augmentations.ipynb```  and hyperparameters were experimented and the model performance on object detection is made better. Tensorboard is used to plot training, validation losses, precision and recall for small, medium and large sized images. The model prediction is then made into an animation to look at how well the model is able to detect objects in the environment.
 
 ### Data
 
@@ -76,8 +76,13 @@ For the number of objects with count of frames, it is seen that there are lesser
 ![frame_and_class_distribution_grid](https://user-images.githubusercontent.com/62600416/205669960-23b024f0-dd4e-4f0d-86c1-543654674d7c.png)
 
 ### Cross validation
+The dataset is split into training, validation and testing. The validation data is used to check if the model overfits the data. It is not possible to run training and evaluation in parallel. The model is evaluated after its training. The evaluation loss increases when the model overfits
 
 ### Training
+First the training was performed using the pre-trained model from the zoo of model available on Tensorflow using transfer learning. The model used here is 
+SSD Resnet 50 640x640 model. You can learn more about the Single Shot Detector ![here](https://arxiv.org/pdf/1512.02325.pdf). The model is loaded to ```reference\pipeline_new.config```. The model is trained for 2500 epochs with folowing code.
+```python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config```
+The progress of the model's training is done using Tensorboard. Different losses (localization loss, training loss) are monitored along with evaluation metrics recall and precision
 #### Reference
 #### Reference experiment
 The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively.
