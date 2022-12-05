@@ -73,6 +73,7 @@ The number of objects in 20000 samples is plotted and compared. It is seen that 
 
 For the number of objects with count of frames, it is seen that there are lesser images with 0 vehicles and more images with 2-10 vehicles. The distribution decreases with increasing number of vehicles. There are upto 65 vehicles in an image. Is it also seen that there are large number of images with zero pedestrians and some images have upto 45 pedestrians. With the cyclists, it is rare to see image with them, atmost of 5 cyclists are seen in an image.
 
+![frame_and_class_distribution_grid](https://user-images.githubusercontent.com/62600416/205669960-23b024f0-dd4e-4f0d-86c1-543654674d7c.png)
 
 ### Cross validation
 
