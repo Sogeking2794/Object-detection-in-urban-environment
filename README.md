@@ -75,7 +75,7 @@ For the number of objects with count of frames, it is seen that there are lesser
 #### Reference experiment
 The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively.
 
-
+![reference_loss](https://user-images.githubusercontent.com/62600416/205664903-09f868fd-617c-4260-b8ac-e13267af5244.png)
 
 The evaluation is run for 1 epoch and is around the training loss about 0.759.
 
