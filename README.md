@@ -58,6 +58,7 @@ python download_process.py --data_dir {processed_file_location} --size {number o
 
 In the classroom workspace, every library and package should already be installed in your environment. No need to make use of `gcloud` to download the images.
 
+
 ## Dataset Analysis
 
 ### Exploratory Data Analysis
@@ -67,14 +68,16 @@ This is to see the how the images and corresponding bounding boxes with classes 
 For the number of objects with count of frames, it is seen that there are lesser images with 0 vehicles and more images with 2-10 vehicles. The distribution decreases with increasing number of vehicles. There are upto 65 vehicles in an image. Is it also seen that there are large number of images with zero pedestrians and some images have upto 45 pedestrians. With the cyclists, it is rare to see image with them, atmost of 5 cyclists are seen in an image.
 
 
-### Create the training - validation splits
-In the class, we talked about cross-validation and the importance of creating meaningful training and validation splits. For this project, you will have to create your own training and validation sets using the files located in `/home/workspace/data/waymo`. The `split` function in the `create_splits.py` file does the following:
-* create three subfolders: `/home/workspace/data/train/`, `/home/workspace/data/val/`, and `/home/workspace/data/test/`
-* split the tf records files between these three folders by symbolically linking the files from `/home/workspace/data/waymo/` to `/home/workspace/data/train/`, `/home/workspace/data/val/`, and `/home/workspace/data/test/`
+### Cross validation
 
-Use the following command to run the script once your function is implemented:
-```
-python create_splits.py --data-dir /home/workspace/data
+### Training
+#### Reference
+#### Reference experiment
+This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+
+#### Improve on the reference
+This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
+
 ```
 
 ### Edit the config file
@@ -132,24 +135,3 @@ Finally, you can create a video of your model's inferences for any tf record fil
 ```
 python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /data/waymo/testing/segment-12200383401366682847_2552_140_2572_140_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.gif
 ```
-
-## Submission Template
-
-### Project overview
-This section should contain a brief description of the project and what we are trying to achieve. Why is object detection such an important component of self driving car systems?
-
-### Set up
-This section should contain a brief description of the steps to follow to run the code for this repository.
-
-### Dataset
-#### Dataset analysis
-This section should contain a quantitative and qualitative description of the dataset. It should include images, charts and other visualizations.
-#### Cross validation
-This section should detail the cross validation strategy and justify your approach.
-
-### Training
-#### Reference experiment
-This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
-
-#### Improve on the reference
-This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
