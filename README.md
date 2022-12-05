@@ -73,10 +73,23 @@ For the number of objects with count of frames, it is seen that there are lesser
 ### Training
 #### Reference
 #### Reference experiment
-This section should detail the results of the reference experiment. It should includes training metrics and a detailed explanation of the algorithm's performances.
+The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively.
+
+
+
+The evaluation is run for 1 epoch and is around the training loss about 0.759.
+
+The recall and precision from the evaluation metrics reveals that the model is not good enough as all the values are nearly/ close to zero as seen in the image.
+
+The model is not good. The evaluation metrics support this statement. 
+Some tweaks in the config and data could be made to improve the models performance. The imporvements made are explained in the next section
 
 #### Improve on the reference
-This section should highlight the different strategies you adopted to improve your model. It should contain relevant figures and details of your findings.
+This section highlights the different strategies adopted to improve model. It contains relevant figures and details of findings.
+- From the random surf through the images, it is seen that maximum object occur in the centerm fewer on the sides and lesser on top and bottom of the images.
+- There are fewer samples in darker/foggy conditions compared to clear conditions. So, brightness, contrast and color shift augmentations should help to improve the models performance.
+- The data class distribution is also uneven, with the vehicle class appearing more and cyclists less. This leads to a bias towards vehicle class.
+
 
 ```
 
