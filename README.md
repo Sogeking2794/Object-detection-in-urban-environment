@@ -81,7 +81,9 @@ The dataset is split into training, validation and testing. The validation data 
 ### Training
 First the training was performed using the pre-trained model from the zoo of model available on Tensorflow using transfer learning. The model used here is 
 SSD Resnet 50 640x640 model. You can learn more about the Single Shot Detector ![here](https://arxiv.org/pdf/1512.02325.pdf). The model is loaded to ```reference\pipeline_new.config```. The model is trained for 2500 epochs with folowing code.
-```python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config```
+```
+python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config
+```
 The progress of the model's training is done using Tensorboard. Different losses (localization loss, training loss) are monitored along with evaluation metrics recall and precision
 #### Reference
 #### Reference experiment
