@@ -130,7 +130,7 @@ The output of the data augmentations are visualized using ```Explore data augmen
 
 ### Edit the config file
 The following changes were made to the ```pipline_new.config``` as part of first experiment ```experiment0```.
-* The base learning_rate for the cosine decay is decreased from 0.04 to 0.004
+* The base learning_rate for the cosine decay is decreased from 0.04 to 0.008
 * The number of epochs is increased from 2500 to 3000
 * The batch size is increased from 2 to 8
 * The following data augmentations were added
@@ -138,6 +138,8 @@ The following changes were made to the ```pipline_new.config``` as part of first
 	* random_adjust_brightness
 	* andom_adjust_contrast
 	* random_adjust_saturation
+
+### Experiment0
 
 **Important:** The checkpoints files can be deleted after each experiment. However keep the `tf.events` files located in the `train` and `eval` folder of experiments.  Also keep the `saved_model` folder to create your videos.
 
