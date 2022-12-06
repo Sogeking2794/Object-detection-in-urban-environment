@@ -17,9 +17,9 @@ As the first step Exploratory Data Analysis is done with ```Exploratory Data Ana
 The data used for training, validation and testing is organized as follow:
 ```
 /home/workspace/data/waymo
-	- training_and_validation - contains 97 files to train and validate your models
-    - train: contain the train data (empty to start)
-    - val: contain the val data (empty to start)
+    - training_and_validation - contains 97 files to train and validate your models
+    - train: 87 files to train
+    - val: 10 files to validate
     - test - contains 3 files to test your model and create inference videos
 ```
 The `training_and_validation` folder contains file that have been downsampled: selected one every 10 frames from 10 fps videos. The `testing` folder contains frames from the 10 fps video without downsampling.
