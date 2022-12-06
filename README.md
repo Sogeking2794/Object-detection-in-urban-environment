@@ -87,7 +87,7 @@ python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeli
 The progress of the model's training is done using Tensorboard. Different losses (localization loss, training loss) are monitored along with evaluation metrics recall and precision
 #### Reference
 #### Reference experiment
-The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively.
+The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively. This oscillation maybe attributed to high learning rate. 
 
 ![reference_loss](https://user-images.githubusercontent.com/62600416/205664903-09f868fd-617c-4260-b8ac-e13267af5244.png)
 
@@ -98,7 +98,7 @@ The recall and precision from the evaluation metrics reveals that the model is n
 ![reference_detection_box_recall](https://user-images.githubusercontent.com/62600416/205665555-7027cc2c-fdc8-4152-b54e-338c8ca20112.png)
 
 The model is not good. The evaluation metrics support this statement. 
-Some tweaks in the config and data could be made to improve the models performance. The imporvements made are explained in the next section
+Some tweaks in the config and data could be made to improve the models performance. The improvements made are explained in the next section
 
 #### Improve on the reference
 This section highlights the different strategies adopted to improve model. It contains relevant figures and details of findings.
