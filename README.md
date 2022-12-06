@@ -81,10 +81,27 @@ The dataset is split into training, validation and testing. The validation data 
 ### Training
 First the training was performed using the pre-trained model from the zoo of model available on Tensorflow using transfer learning. The model used here is 
 SSD Resnet 50 640x640 model. You can learn more about the Single Shot Detector ![here](https://arxiv.org/pdf/1512.02325.pdf). The model is loaded to ```reference\pipeline_new.config```. The model is trained for 2500 epochs with folowing code.
+
+First, download the [pretrained model](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz) and move it to `/home/workspace/experiments/pretrained_model/`.
+
+Edit the config files to change the location of the training and validation files, as well as the location of the label_map file, pretrained weights. Also need to adjust the batch size. To do so, run the following:
+```
+python edit_config.py --train_dir /home/workspace/data/train/ --eval_dir /home/workspace/data/val/ --batch_size 2 --checkpoint /home/workspace/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /home/workspace/experiments/label_map.pbtxt
+```
+A new config file has been created, `pipeline_new.config`.
 ```
 python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config
 ```
+Once the training is finished, launch the evaluation process:
+* an evaluation process:
+```
+python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config --checkpoint_dir=experiments/reference/
+```
+
+**Note**: Both processes will display some Tensorflow warnings, which can be ignored. To kill the evaluation script manually using
+`CTRL+C`.
 The progress of the model's training is done using Tensorboard. Different losses (localization loss, training loss) are monitored along with evaluation metrics recall and precision
+
 #### Reference
 #### Reference experiment
 The loss curve starts low and starts to oscillate, this oscillation starts to decrease meaning the model is learning. The loss comes to around 0.702 at the end of 2500 epochs. The localization loss and the total loss comes to around 0.75 and 15.31 respectively. This oscillation maybe attributed to high learning rate. 
@@ -111,56 +128,18 @@ The output of the data augmentations are visualized using ```Explore data augmen
 
 ![exp0_img_grid](https://user-images.githubusercontent.com/62600416/205911914-f7a00b3d-b2a7-477e-aacf-c06006ae0ff1.png)
 
+### Edit the config file
 The following changes were made to the ```pipline_new.config``` as part of first experiment ```experiment0```.
 * The base learning_rate for the cosine decay is decreased from 0.04 to 0.004
+* The number of epochs is increased from 2500 to 3000
 * The batch size is increased from 2 to 8
 * The following data augmentations were added
 	* random_rbg_to_gray
 	* random_adjust_brightness
 	* andom_adjust_contrast
 	* random_adjust_saturation
-```
 
-### Edit the config file
-
-Now you are ready for training. As we explain during the course, the Tf Object Detection API relies on **config files**. The config that we will use for this project is `pipeline.config`, which is the config for a SSD Resnet 50 640x640 model. You can learn more about the Single Shot Detector [here](https://arxiv.org/pdf/1512.02325.pdf).
-
-First, let's download the [pretrained model](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8.tar.gz) and move it to `/home/workspace/experiments/pretrained_model/`.
-
-We need to edit the config files to change the location of the training and validation files, as well as the location of the label_map file, pretrained weights. We also need to adjust the batch size. To do so, run the following:
-```
-python edit_config.py --train_dir /home/workspace/data/train/ --eval_dir /home/workspace/data/val/ --batch_size 2 --checkpoint /home/workspace/experiments/pretrained_model/ssd_resnet50_v1_fpn_640x640_coco17_tpu-8/checkpoint/ckpt-0 --label_map /home/workspace/experiments/label_map.pbtxt
-```
-A new config file has been created, `pipeline_new.config`.
-
-### Training
-
-You will now launch your very first experiment with the Tensorflow object detection API. Move the `pipeline_new.config` to the `/home/workspace/experiments/reference` folder. Now launch the training process:
-* a training process:
-```
-python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config
-```
-Once the training is finished, launch the evaluation process:
-* an evaluation process:
-```
-python experiments/model_main_tf2.py --model_dir=experiments/reference/ --pipeline_config_path=experiments/reference/pipeline_new.config --checkpoint_dir=experiments/reference/
-```
-
-**Note**: Both processes will display some Tensorflow warnings, which can be ignored. You may have to kill the evaluation script manually using
-`CTRL+C`.
-
-To monitor the training, you can launch a tensorboard instance by running `python -m tensorboard.main --logdir experiments/reference/`. You will report your findings in the writeup.
-
-### Improve the performances
-
-Most likely, this initial experiment did not yield optimal results. However, you can make multiple changes to the config file to improve this model. One obvious change consists in improving the data augmentation strategy. The [`preprocessor.proto`](https://github.com/tensorflow/models/blob/master/research/object_detection/protos/preprocessor.proto) file contains the different data augmentation method available in the Tf Object Detection API. To help you visualize these augmentations, we are providing a notebook: `Explore augmentations.ipynb`. Using this notebook, try different data augmentation combinations and select the one you think is optimal for our dataset. Justify your choices in the writeup.
-
-Keep in mind that the following are also available:
-* experiment with the optimizer: type of optimizer, learning rate, scheduler etc
-* experiment with the architecture. The Tf Object Detection API [model zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) offers many architectures. Keep in mind that the `pipeline.config` file is unique for each architecture and you will have to edit it.
-
-**Important:** If you are working on the workspace, your storage is limited. You may to delete the checkpoints files after each experiment. You should however keep the `tf.events` files located in the `train` and `eval` folder of your experiments. You can also keep the `saved_model` folder to create your videos.
-
+**Important:** The checkpoints files can be deleted after each experiment. However keep the `tf.events` files located in the `train` and `eval` folder of experiments.  Also keep the `saved_model` folder to create your videos.
 
 ### Creating an animation
 #### Export the trained model
