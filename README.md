@@ -109,6 +109,7 @@ This section highlights the different strategies adopted to improve model.
 
 The output of the data augmentations are visualized using ```Explore data augmentations.ipynb```. A grid of 8 samples is observed as below.
 
+![exp0_img_grid](https://user-images.githubusercontent.com/62600416/205911914-f7a00b3d-b2a7-477e-aacf-c06006ae0ff1.png)
 
 The following changes were made to the ```pipline_new.config``` as part of first experiment ```experiment0```.
 * The base learning_rate for the cosine decay is decreased from 0.04 to 0.004
