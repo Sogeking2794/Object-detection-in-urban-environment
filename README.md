@@ -153,7 +153,10 @@ python experiments/model_main_tf2.py --model_dir=experiments/experiment0/ --pipe
 
 To compare both the results, the mAP (Mean average precision increased to 0.15 and a slight increase in AR (average recall). AR given 1 detection per image is 0.02. The AR given 10 detections per image is 0.13, the AR given 100 detections per image is 0.2 and for AR@100 (large) is 0.71. The AR@100 (medium) is 0.58 and for AR@100 (small) is 0.15.
 
+![compare_precision](https://user-images.githubusercontent.com/62600416/206176157-d10519d5-99ff-44e6-b2fe-aa9ef9c86e09.png)
+
 The greater the objects in the image or detections per image are, the better our model. the ability of the model to precisely detect an object decreases as the size of the object decreases. The model performs better the more objects or image detections.
+
 
 The model has ~0.7 precision and recall for large objects. With a threshold of 0.5, the models IOU is 0.3
 
