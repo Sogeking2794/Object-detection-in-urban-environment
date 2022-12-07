@@ -167,6 +167,7 @@ The learning rate decay over the epochs is shown
 
 The loss curve shows the improvement of the model performance compared to the reference model, the training loss at the end of 3000 epochs is ~0.2 compared to 0.7 for the reference model, the total loss also decreased from 9 to 0.9. The evaluation loss decreased from 0.7 to 0.3. The model can be further tweaked to learn medium and smaller objects better.
 
+![compare_loss](https://user-images.githubusercontent.com/62600416/206176729-75553fd5-7f4b-4816-a2a5-93be3b153046.png)
 
 ### Creating an animation
 #### Export the trained model
