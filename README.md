@@ -185,3 +185,4 @@ python inference_video.py --labelmap_path label_map.pbtxt --model_path experimen
 ```
 ![animation](https://github.com/Sogeking2794/Object-detection-in-urban-environment/blob/master/animation.gif)
 ![animation_1](https://github.com/Sogeking2794/Object-detection-in-urban-environment/blob/master/animation_1.gif)
+![animation_2](https://github.com/Sogeking2794/Object-detection-in-urban-environment/blob/master/animation_2.gif)
