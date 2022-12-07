@@ -140,9 +140,26 @@ The following changes were made to the ```pipline_new.config``` as part of first
 	* random_adjust_saturation
 
 ### Experiment0
-
+A new config file has been created, `experiments/experiment0/pipeline_new.config`. The training was done for 3000 steps with the following command
+```
+python experiments/model_main_tf2.py --model_dir=experiments/experiment0/ --pipeline_config_path=experiments/experiment0/pipeline_new.config
+```
+Once the training is finished, launch the evaluation process:
+* an evaluation process:
+```
+python experiments/model_main_tf2.py --model_dir=experiments/experiment0/ --pipeline_config_path=experiments/experiment0/pipeline_new.config --checkpoint_dir=experiments/experiment0/
+```
 **Important:** The checkpoints files can be deleted after each experiment. However keep the `tf.events` files located in the `train` and `eval` folder of experiments.  Also keep the `saved_model` folder to create your videos.
 
+To compare both the results, the mAP (Mean average precision increased to 0.15 and a slight increase in AR (average recall). AR given 1 detection per image is 0.02. The AR given 10 detections per image is 0.13, the AR given 100 detections per image is 0.2 and for AR@100 (large) is 0.71. The AR@100 (medium) is 0.58 and for AR@100 (small) is 0.15.
+
+The greater the objects in the image or detections per image are, the better our model. the ability of the model to precisely detect an object decreases as the size of the object decreases. The model performs better the more objects or image detections.
+
+The model has ~0.7 precision and recall for large objects. With a threshold of 0.5, the models IOU is 0.3
+
+The learning rate decay over the epochs is shown
+
+The loss curve shows the improvement of the model performance compared to the reference model, the training loss at the end of 3000 epochs is ~0.2 compared to 0.7 for the reference model, the total loss also decreased from 9 to 0.9. The evaluation loss decreased from 0.7 to 0.3. The model can be further tweaked to learn medium and smaller objects better.
 ### Creating an animation
 #### Export the trained model
 Modify the arguments of the following function to adjust it to your models:
@@ -153,7 +170,7 @@ python experiments/exporter_main_v2.py --input_type image_tensor --pipeline_conf
 
 This should create a new folder `experiments/reference/exported/saved_model`. You can read more about the Tensorflow SavedModel format [here](https://www.tensorflow.org/guide/saved_model).
 
-Finally, you can create a video of your model's inferences for any tf record file. To do so, run the following command (modify it to your files):
+Finally, create a video of the model's inferences for any tf record file. To do so, run the following command (modify it to your files):
 ```
 python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /data/waymo/testing/segment-12200383401366682847_2552_140_2572_140_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.gif
 ```
