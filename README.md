@@ -163,7 +163,11 @@ The model has ~0.7 precision and recall for large objects. With a threshold of 0
 
 The learning rate decay over the epochs is shown
 
+![compare_lr](https://user-images.githubusercontent.com/62600416/206176557-92d2509e-3e23-4a49-9457-798ccc8488cc.png)
+
 The loss curve shows the improvement of the model performance compared to the reference model, the training loss at the end of 3000 epochs is ~0.2 compared to 0.7 for the reference model, the total loss also decreased from 9 to 0.9. The evaluation loss decreased from 0.7 to 0.3. The model can be further tweaked to learn medium and smaller objects better.
+
+
 ### Creating an animation
 #### Export the trained model
 Modify the arguments of the following function to adjust it to your models:
