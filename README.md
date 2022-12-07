@@ -183,3 +183,5 @@ Finally, create a video of the model's inferences for any tf record file. To do 
 ```
 python inference_video.py --labelmap_path label_map.pbtxt --model_path experiments/reference/exported/saved_model --tf_record_path /data/waymo/testing/segment-12200383401366682847_2552_140_2572_140_with_camera_labels.tfrecord --config_path experiments/reference/pipeline_new.config --output_path animation.gif
 ```
+![animation](https://github.com/Sogeking2794/Object-detection-in-urban-environment/blob/master/animation.gif)
+![animation_1](https://github.com/Sogeking2794/Object-detection-in-urban-environment/blob/master/animation_1.gif)
