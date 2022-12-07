@@ -157,6 +157,7 @@ To compare both the results, the mAP (Mean average precision increased to 0.15 a
 
 The greater the objects in the image or detections per image are, the better our model. the ability of the model to precisely detect an object decreases as the size of the object decreases. The model performs better the more objects or image detections.
 
+![compare_recall](https://user-images.githubusercontent.com/62600416/206176386-bdcbb80c-6f59-49b2-8e95-7c3b9c5ff08b.png)
 
 The model has ~0.7 precision and recall for large objects. With a threshold of 0.5, the models IOU is 0.3
 
